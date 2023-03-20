@@ -8,6 +8,9 @@ module.exports = function (defaults) {
     'ember-simple-auth': {
       useSessionSetupMethod: true,
     },
+    '@appuniversum/ember-appuniversum': {
+      disableWormholeElement: true,
+    },
   });
   // Use `app.import` to add additional libraries to the generated
   // output files.
