@@ -28,7 +28,10 @@
   },
   "overrides": {
     "@embroider/macros": "^1.0.0",
-    "ember-style-modifier": "^0.8.0"
+    "ember-style-modifier": "^0.8.0",
+    "n3": {
+      "readable-stream": "4.3.0"
+    }
   },
   "devDependencies": {
     "@appuniversum/ember-appuniversum": "^2.5.0",
