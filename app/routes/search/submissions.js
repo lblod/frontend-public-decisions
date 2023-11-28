@@ -1,5 +1,4 @@
 import { isEmpty } from '@ember/utils';
-import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 import search from '../../utils/mu-search';
 import Snapshot from '../../utils/snapshot';
@@ -92,11 +91,5 @@ export default class SearchSubmissionsRoute extends Route {
 
     if (controller.filter !== this.filter)
       controller.set('filter', this.filter);
-  }
-
-  @action
-  loading(/* transition, origin */) {
-    // Cancel default loading template
-    return;
   }
 }
