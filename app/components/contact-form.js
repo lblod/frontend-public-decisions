@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 
 export default class ContactFormComponent extends Component {
-  @tracked selectedOption = null;
+  @tracked subject = null;
 
   subjectOptions = [
     {
@@ -16,14 +16,12 @@ export default class ContactFormComponent extends Component {
   ];
 
   get canSend() {
-    return Boolean(this.selectedOption);
+    return Boolean(this.subject);
   }
 
   get mailto() {
     if (this.canSend) {
-      let subject = this.selectedOption.subject;
-
-      return `mailto:LoketLokaalBestuur@vlaanderen.be?subject=${subject} - Publieke besluitendatabank`;
+      return `mailto:LoketLokaalBestuur@vlaanderen.be?subject=${this.subject} - Publieke besluitendatabank`;
     } else {
       return '';
     }
