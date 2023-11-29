@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 import ENV from 'frontend-public-decisions/config/environment';
 
 export default class ApplicationRoute extends Route {
