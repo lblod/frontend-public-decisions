@@ -26,7 +26,7 @@ export default class SearchSubmissionsRoute extends Route {
 
     if (
       this.lastParams.anyFieldChanged(
-        Object.keys(params).filter((key) => key !== 'page')
+        Object.keys(params).filter((key) => key !== 'page'),
       )
     ) {
       params.page = 0;
@@ -79,7 +79,7 @@ export default class SearchSubmissionsRoute extends Route {
       function (item) {
         item.attributes.id = item.id;
         return item.attributes;
-      }
+      },
     );
   }
 
