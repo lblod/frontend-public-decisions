@@ -12,6 +12,7 @@ export const CHART_OF_ACCOUNT =
 export default class ConceptSchemeModel extends Model {
   @attr uri;
 
-  @hasMany('concept', { inverse: null }) concepts;
-  @hasMany('concept', { inverse: null }) topConcepts;
+  @hasMany('concept', { async: true, inverse: 'conceptSchemes' }) concepts;
+  @hasMany('concept', { async: true, inverse: 'topConceptSchemes' })
+  topConcepts;
 }

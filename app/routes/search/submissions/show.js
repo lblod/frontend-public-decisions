@@ -6,12 +6,7 @@ export default class SearchSubmissionsShowRoute extends Route {
 
   model(params) {
     return this.store.findRecord('submission', params.id, {
-      include: [
-        'organization.classificatie',
-        'organization.provincie',
-        'form-data.types',
-        'last-modifier',
-      ].join(','),
+      include: ['organization.classificatie'].join(','),
     });
   }
 }
