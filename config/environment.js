@@ -19,9 +19,6 @@ module.exports = function (environment) {
       // when it is created
     },
     appName: 'Publieke Besluitendatabank',
-    moment: {
-      allowEmpty: true,
-    },
     //TODO: activate once ACM/IDM is ready
     torii: {
       disableRedirectInitializer: true,
