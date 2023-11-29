@@ -1,4 +1,3 @@
-import { warn } from '@ember/debug';
 import { inject as service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
@@ -26,13 +25,15 @@ export default class SubmissionsFormComponent extends Component {
 
   @task
   *loadData() {
-    const submission = yield this.args.submission;
+    const submission = this.args.submission;
     // Fetch data from backend
-    const submissionDocument = yield submission.submissionDocument;
+    yield submission.belongsTo('submissionDocument').reload();
+
+    const submissionDocument = submission.submissionDocument;
 
     if (!submissionDocument) {
-      warn('No submission document. Transitioning to index.');
-      this.router.transitionTo('supervision.submissions');
+      console.warn('No submission document. Transitioning to index.');
+      return this.router.transitionTo('search.submissions');
     }
 
     const response = yield fetch(`/submission-forms/${submissionDocument.id}`);

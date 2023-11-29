@@ -7,19 +7,24 @@ export default class Submission extends Model {
     },
   })
   created;
+
   @attr('datetime', {
     defaultValue() {
       return new Date();
     },
   })
   modified;
+
   @attr('datetime') sentDate;
   @attr('datetime') receivedDate;
   @attr source;
   @attr uri;
   @attr href;
-  @belongsTo('form-data') formData;
-  @belongsTo('bestuurseenheid') organization;
-  @belongsTo('submission-document') submissionDocument;
-  @hasMany('file') files;
+  @belongsTo('form-data', { async: false, inverse: 'submission' }) formData;
+  @belongsTo('bestuurseenheid', { async: false, inverse: null }) organization;
+
+  @belongsTo('submission-document', { async: false, inverse: 'submission' })
+  submissionDocument;
+
+  @hasMany('file', { async: true, inverse: null }) files;
 }

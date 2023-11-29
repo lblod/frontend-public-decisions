@@ -14,8 +14,11 @@ export default class ConceptModel extends Model {
   @attr notation;
   @attr searchLabel;
 
-  @hasMany('concept-scheme', { inverse: null }) conceptSchemes;
-  @hasMany('concept-scheme', { inverse: null }) topConceptSchemes;
+  @hasMany('concept-scheme', { async: true, inverse: 'concepts' })
+  conceptSchemes;
+
+  @hasMany('concept-scheme', { async: true, inverse: 'topConcepts' })
+  topConceptSchemes;
 
   get isRegulation() {
     return (
