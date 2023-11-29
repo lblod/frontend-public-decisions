@@ -6,7 +6,6 @@ export default class Gebruiker extends Model {
   @attr achternaam;
 
   @hasMany('bestuurseenheid', { async: false, inverse: null }) bestuurseenheden;
-  @hasMany('search-query', { async: true, inverse: 'user' }) searchQueries;
 
   get group() {
     return this.bestuurseenheden.at(0);
