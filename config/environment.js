@@ -19,18 +19,12 @@ module.exports = function (environment) {
       // when it is created
     },
     appName: 'Publieke Besluitendatabank',
-    //TODO: activate once ACM/IDM is ready
-    torii: {
-      disableRedirectInitializer: true,
-      providers: {
-        'acmidm-oauth2': {
-          apiKey: '{{OAUTH_API_KEY}}',
-          baseUrl: '{{OAUTH_BASE_URL}}',
-          scope: 'openid vo profile abb_besluitendatabank',
-          redirectUri: '{{OAUTH_REDIRECT_URL}}',
-          logoutUrl: '{{OAUTH_LOGOUT_URL}}',
-        },
-      },
+    acmidm: {
+      clientId: '{{OAUTH_API_KEY}}',
+      scope: 'openid vo profile abb_besluitendatabank',
+      authUrl: '{{OAUTH_BASE_URL}}',
+      logoutUrl: '{{OAUTH_LOGOUT_URL}}',
+      authRedirectUrl: '{{OAUTH_REDIRECT_URL}}',
     },
     // This config can be removed once the auto-startup logic is removed from ember-plausible:
     // https://github.com/redpencilio/ember-plausible/issues/4

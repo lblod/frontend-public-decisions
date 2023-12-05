@@ -1,3 +1,5 @@
+{{page-title (app-name)}}
+
 <AuApp>
   <AuMainHeader @homeRoute="index" @appTitle={{(app-name)}}>
     <li class="au-c-list-horizontal__item">
@@ -8,15 +10,13 @@
     </li>
     <li class="au-c-list-horizontal__item" role="menu">
       {{#if this.session.isAuthenticated}}
-        <AuButton
-          @skin="link"
+        <AuLink
+          @route="auth.logout"
           @icon="logout"
-          @iconAlignment="left"
           role="menuitem"
-          {{on "click" this.logout}}
         >
           Afmelden
-        </AuButton>
+        </AuLink>
       {{else}}
         <LoginButton @isCompact={{true}} />
       {{/if}}

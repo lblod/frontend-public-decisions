@@ -7,7 +7,13 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function () {
+  this.route('auth', { path: '/authorization' }, function () {
+    this.route('login');
+    this.route('logout');
+    this.route('callback');
+  });
   this.route('login');
+  this.route('mock-login');
 
   this.route('search', function () {
     this.route('submissions', function () {
@@ -24,6 +30,5 @@ Router.map(function () {
     path: '/*wildcard',
   });
 
-  this.route('mock-login');
   this.route('help');
 });
