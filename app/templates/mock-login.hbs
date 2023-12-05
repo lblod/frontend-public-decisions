@@ -1,40 +1,76 @@
-<div id="main" itemprop="mainContentOfPage" role="main" tabindex="-1" class="au-c-main-container__content au-c-main-container__content--scroll">
+<div
+  id="main"
+  itemprop="mainContentOfPage"
+  role="main"
+  tabindex="-1"
+  class="au-c-main-container__content au-c-main-container__content--scroll"
+>
   <AuContentHeader @titlePartOne="Vlaanderen" @titlePartTwo="is lokaal bestuur">
-    <img sizes="50vw" src="/assets/images/inzendingen-header-1600.jpg" srcset="/assets/images/inzendingen-header-320.jpg 320w, /assets/images/inzendingen-header-1024.jpg 1024w, /assets/images/inzendingen-header-1600.jpg 1600w" alt="">
+    <img
+      sizes="50vw"
+      src="/assets/images/inzendingen-header-1600.jpg"
+      srcset="/assets/images/inzendingen-header-320.jpg 320w, /assets/images/inzendingen-header-1024.jpg 1024w, /assets/images/inzendingen-header-1600.jpg 1600w"
+      alt=""
+    />
   </AuContentHeader>
 
   <section class="au-o-region-large">
     <div class="au-o-layout au-o-layout--small">
-
-      <AuHeading @level="2" @skin="3">Kies een bestuurseenheid om mee in te loggen.</AuHeading>
+      <AuHeading @level="2" @skin="3">
+        Kies een bestuurseenheid om mee in te loggen.
+      </AuHeading>
 
       <div class="au-o-region">
         <MockLogin as |login|>
           {{#if this.queryStore.isRunning}}
             <AuLoader @padding="small" />
-            <span class="au-u-hidden-visually">Aan het laden</span>
           {{else}}
             {{#if login.errorMessage}}
-              <AuAlert @icon="info-circle" @title={{login.errorMessage}}  @skin="error">{{login.errorMessage}}</AuAlert>
+              <AuAlert
+                @icon="info-circle"
+                @title={{login.errorMessage}}
+                @skin="error"
+              >{{login.errorMessage}}</AuAlert>
             {{/if}}
-            <login.each-account @accounts={{this.model}} as |account|>
-                <div class="au-o-box au-o-box--small au-c-card au-u-margin-bottom-small">
-                  <p>
-                  {{account.gebruiker.voornaam}} {{account.gebruiker.achternaam}}
-                  </p>
-                  {{#if account.gebruiker.group.alternatieveNaam}}
-                    <AuHr/>
-                    <p>
-                      <span class="au-c-info-text">Alternatieve naam:</span>
-                      {{#each account.gebruiker.bestuurseenheden as |bestuurseenheid|}}
-                        {{#each bestuurseenheid.alternatieveNaam as |alternatieveNaam|}}
-                          <AuPill>{{alternatieveNaam}}</AuPill>
-                        {{/each}}
-                      {{/each}}
-                    </p>
-                  {{/if}}
-                </div>
-            </login.each-account>
+            {{#if login.isLoading}}
+              <PageLoader>Aan het aanmelden</PageLoader>
+            {{else}}
+              <ul class="au-o-flow au-o-flow--small au-u-margin-bottom-small">
+                {{#each this.model as |account|}}
+                  <li>
+                    <button
+                      type="button"
+                      class="au-o-box au-o-box--small au-c-card au-u-1-1 au-u-text-left au-u-font au-u-para-small cursor-pointer"
+                      {{on
+                        "click"
+                        (fn login.login account.id account.gebruiker.group.id)
+                      }}
+                    >
+                      <p>
+                        {{account.gebruiker.voornaam}}
+                        {{account.gebruiker.achternaam}}
+                      </p>
+                      {{#if account.gebruiker.group.alternatieveNaam}}
+                        <AuHr />
+                        <p>
+                          <span class="au-c-info-text">Alternatieve naam:</span>
+                          {{#each
+                            account.gebruiker.bestuurseenheden
+                            as |bestuurseenheid|
+                          }}
+                            {{#each
+                              bestuurseenheid.alternatieveNaam
+                              as |alternatieveNaam|
+                            }}
+                              <AuPill>{{alternatieveNaam}}</AuPill>
+                            {{/each}}
+                          {{/each}}
+                        </p>
+                      {{/if}}
+                    </button>
+                  </li>
+                {{/each}}
+              </ul>
               <AuDataTableNumberPagination
                 @page={{this.page}}
                 @size={{this.size}}
@@ -42,6 +78,7 @@
                 @total={{this.model.meta.count}}
                 @links={{this.model.meta.pagination}}
               />
+            {{/if}}
           {{/if}}
         </MockLogin>
       </div>
@@ -51,4 +88,3 @@
 
   <AppFooter />
 </div>
-
