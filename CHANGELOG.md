@@ -1,3 +1,8 @@
+## v1.8.0 (2024-03-13)
+
+#### :rocket: Enhancement
+* [#43](https://github.com/lblod/frontend-public-decisions/pull/43) [DL-5735] Enable the 'bulk download' feature for the files and remote-url fields ([@Windvis](https://github.com/Windvis))
+
 ## v1.7.0 (2024-01-05)
 
 #### :rocket: Enhancement
