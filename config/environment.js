@@ -35,6 +35,7 @@ module.exports = function (environment) {
       domain: '{{ANALYTICS_APP_DOMAIN}}',
       apiHost: '{{ANALYTICS_API_HOST}}',
     },
+    authEnabled: '{{AUTH_ENABLED}}'
   };
 
   if (environment === 'development') {
