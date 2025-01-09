@@ -25,7 +25,9 @@
       <div class="au-o-region">
         <MockLogin as |login|>
           {{#if this.queryStore.isRunning}}
-            <AuLoader @padding="small" />
+            <AuLoader @hideMessage={{true}} @centered={{false}}>
+              Bestuurseenheden aan het laden
+            </AuLoader>
           {{else}}
             {{#if login.errorMessage}}
               <AuAlert

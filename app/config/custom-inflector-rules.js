@@ -1,3 +1,7 @@
+// TODO: needed to work around a bug in the deprecation support code.
+// Remove this once we switch to the non-deprecated setup.
+// More info: https://discord.com/channels/480462759797063690/1252995554158317568/1270006420296826903
+import '@ember-data/request-utils/deprecation-support';
 import Inflector from 'ember-inflector';
 
 const inflector = Inflector.inflector;
