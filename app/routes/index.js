@@ -8,9 +8,9 @@ export default class IndexRoute extends Route {
 
   beforeModel(transition) {
     const authenticationDisabled = ['false', 'False', 'FALSE', false].includes(
-      config.authEnabled
+      config.authEnabled,
     );
-    if (!authenticationDisabled){
+    if (!authenticationDisabled) {
       this.session.requireAuthentication(transition, 'login');
     }
 
