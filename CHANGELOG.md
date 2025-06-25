@@ -1,3 +1,17 @@
+## v1.10.0 (2025-06-25)
+
+#### :house: Internal
+* [#44](https://github.com/lblod/frontend-public-decisions/pull/44) Update to node 22 ([@Windvis](https://github.com/Windvis))
+* [#45](https://github.com/lblod/frontend-public-decisions/pull/45) Update to Appuniversum v3 ([@Windvis](https://github.com/Windvis))
+* [#46](https://github.com/lblod/frontend-public-decisions/pull/46) Update the inflection rule setup ([@Windvis](https://github.com/Windvis))
+* [#47](https://github.com/lblod/frontend-public-decisions/pull/47) [DL-6373] Update to Ember v5.12 ([@Windvis](https://github.com/Windvis))
+* [#48](https://github.com/lblod/frontend-public-decisions/pull/48) [DL-6689] Fix an issue with the search field ([@wolfderechter](https://github.com/wolfderechter))
+
+## v1.9.0 (2024-09-27)
+
+#### :rocket: Enhancement
+* Added {{AUTH_ENABLED}} ([@cecemel](https://github.com/cecemel))
+
 ## v1.8.0 (2024-03-13)
 
 #### :rocket: Enhancement
